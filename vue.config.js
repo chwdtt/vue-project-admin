@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: __dirname + '/dist'
+    // publicPath: __dirname + '/dist'
 }

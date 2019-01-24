@@ -4,13 +4,13 @@
       <h3 class="title text-center">个人后台管理系统</h3>  
       <el-form class="login-form" :model="ruleForm" :rules="rules" ref="ruleForm">
         <el-form-item prop="username">
-          <el-input v-model="ruleForm.username"></el-input>
+          <el-input v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="ruleForm.password" type="password"></el-input>
+          <el-input v-model="ruleForm.password" type="password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" style="width: 100%">login in</el-button>
+            <el-button type="primary" style="width: 100%" :loading="loading" @click="handleLogin">login in</el-button>
             <div class="default-login-info">
               <span>账号：{{username}}</span><span class="ml-20">密码：any</span>
             </div>
@@ -25,6 +25,7 @@ export default {
     name: 'login',
     data() {
         return {
+            loading: false,
             ruleForm: {
                 username: '',
                 password: ''
@@ -40,9 +41,30 @@ export default {
             }
         }
     },
+    created() {
+      let _this = this;
+      // 添加keydown事件
+      document.onkeydown=function(e){
+        var key=window.event.keyCode;
+        if(key==13){
+          _this.handleLogin();
+        }
+      }
+    },
     computed: {
       ...mapGetters(['username'])
-    }
+    },
+    methods: {
+      handleLogin() {
+        this.$refs['ruleForm'].validate((valid) => {
+          if (valid) {
+            this.$router.push('/')
+          } else {
+            return false;
+          }
+        });
+      }
+    },
 }
 </script>
 
@@ -56,6 +78,22 @@ $w300: 300;
   @return $args + px; 
 }
 .login-container {
+  /deep/input::-webkit-input-placeholder{
+      color:#606266;
+      font-size: 12px;
+  }
+  /deep/input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+      color:#606266;
+      font-size: 12px;
+  }
+  /deep/input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+      color:#606266;
+      font-size: 12px;
+  }
+  /deep/input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+      color:#606266;
+      font-size: 12px;
+  }
   position: relative;
   min-height: 100%;
   width: 100%;
