@@ -1,4 +1,4 @@
 module.exports = {
-    baseUrl: '/public',
+    baseUrl: '/',
     outputDir: 'dist'
 }
