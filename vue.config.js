@@ -1,4 +1,3 @@
 module.exports = {
-    baseUrl: '/',
-    outputDir: 'dist'
+    publicPath: '/dist/index.html'
 }
