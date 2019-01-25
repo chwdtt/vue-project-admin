@@ -46,7 +46,7 @@ export default {
 		// 添加keydown事件
 		document.onkeydown = function(e) {
 			let key = window.event.keyCode;
-			if (key == 13) {
+			if (key === 13) {
 				_this.handleLogin();
 			}
 		};
