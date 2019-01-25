@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <section class="center-wrap">
-      <h3 class="title text-center">个人后台管理系统</h3>  
+      <h3 class="title text-center">个人后台管理系统</h3>
       <el-form class="login-form" :model="ruleForm" :rules="rules" ref="ruleForm">
         <el-form-item prop="username">
           <el-input v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
@@ -22,66 +22,66 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-    name: 'login',
-    data() {
-        return {
-            loading: false,
-            ruleForm: {
-                username: '',
-                password: ''
-            },
-            rules: {
-              username: [
-                { required: true, message: '请输入用户名', trigger: 'blur' }
-              ],
-              password: [
-                { required: true, message: '请输入密码', trigger: 'blur' }
-              ]
+	name: 'login',
+	data() {
+		return {
+			loading: false,
+			ruleForm: {
+				username: '',
+				password: ''
+			},
+			rules: {
+				username: [
+					{ required: true, message: '请输入用户名', trigger: 'blur' }
+				],
+				password: [
+					{ required: true, message: '请输入密码', trigger: 'blur' }
+				]
 
-            }
-        }
-    },
-    created() {
-      let _this = this;
-      // 添加keydown事件
-      document.onkeydown=function(e){
-        var key=window.event.keyCode;
-        if(key==13){
-          _this.handleLogin();
-        }
-      }
-    },
-    computed: {
-      ...mapGetters(['username'])
-    },
-    methods: {
-      handleLogin() {
-        this.$refs['ruleForm'].validate((valid) => {
-          if (valid) {
-            this.login();
-          } else {
-            return false;
-          }
-        });
-      },
-      login() {
-        this.axios({
-          method: 'post',
-          url: '/user/login',
-          data: {
-            username: 'chenhewen123',
-            password: 123456
-          }
-        })
-        .then( res => {
-          console.log(res);
-        })
-        .catch( err=> {
-          console.log(err)
-        } )
-      }
-    },
-}
+			}
+		};
+	},
+	created() {
+		let _this = this;
+		// 添加keydown事件
+		document.onkeydown = function(e) {
+			let key = window.event.keyCode;
+			if (key == 13) {
+				_this.handleLogin();
+			}
+		};
+	},
+	computed: {
+		...mapGetters(['username'])
+	},
+	methods: {
+		handleLogin() {
+			this.$refs['ruleForm'].validate((valid) => {
+				if (valid) {
+					this.login();
+				} else {
+					return false;
+				}
+			});
+		},
+		login() {
+			this.axios({
+				method: 'post',
+				url: '/user/login',
+				data: {
+					username: 'chenhewen123',
+					password: 123456
+				}
+			})
+				.then(res => {
+					console.log(res);
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		}
+	},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -90,8 +90,8 @@ $w520: 520;
 $w400: 400;
 $w320: 320;
 $w300: 300;
-@function handleWidthLoginWrap($args) { 
-  @return $args + px; 
+@function handleWidthLoginWrap($args) {
+  @return $args + px;
 }
 .login-container {
   /deep/input::-webkit-input-placeholder{
@@ -106,7 +106,7 @@ $w300: 300;
       color:#606266;
       font-size: 12px;
   }
-  /deep/input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+  /deep/input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
       color:#606266;
       font-size: 12px;
   }
@@ -129,7 +129,7 @@ $w300: 300;
         padding: 20px 0;
         color: #fff;
         font-size: 18px;
-    }  
+    }
     position: absolute;
     margin-left: handleWidthLoginWrap(-$w320/2);
     margin-top: -200px; //固定
