@@ -58,11 +58,27 @@ export default {
       handleLogin() {
         this.$refs['ruleForm'].validate((valid) => {
           if (valid) {
-            this.$router.push('/')
+            this.login();
           } else {
             return false;
           }
         });
+      },
+      login() {
+        this.axios({
+          method: 'post',
+          url: '/user/login',
+          data: {
+            username: 'chenhewen123',
+            password: 123456
+          }
+        })
+        .then( res => {
+          console.log(res);
+        })
+        .catch( err=> {
+          console.log(err)
+        } )
       }
     },
 }

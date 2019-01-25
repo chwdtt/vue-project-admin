@@ -1,14 +1,13 @@
 import axios from 'axios';
 
 const service = axios.create({
-    baseURL: '/',
+    baseURL: 'https://www.easy-mock.com/mock/5c47d920d78a504a6c37c038',
     timeout: 5000
 });
-
-
 // 添加请求拦截器
-axios.interceptors.request.use( config => {
+service.interceptors.request.use( config => {
     // todos 获取token，在headers中设置token
+    debugger;
     config.headers['sessionId'] = 123;
     return config;
 }, error => {
@@ -18,7 +17,7 @@ axios.interceptors.request.use( config => {
 
 
 // 添加响应拦截器
-axios.interceptors.response.use( response => {
+service.interceptors.response.use( response => {
     // 对响应数据做点什么
     return response;
 }, error => {
