@@ -58,27 +58,13 @@ export default {
 		handleLogin() {
 			this.$refs['ruleForm'].validate((valid) => {
 				if (valid) {
-					this.login();
+					this.$store.dispatch('LoginByUsername', this.ruleForm).then(() => {
+						this.$router.push('/');
+					});
 				} else {
 					return false;
 				}
 			});
-		},
-		login() {
-			this.axios({
-				method: 'post',
-				url: '/user/login',
-				data: {
-					username: 'chenhewen123',
-					password: 123456
-				}
-			})
-				.then(res => {
-					console.log(res);
-				})
-				.catch(err => {
-					console.log(err);
-				});
 		}
 	},
 };
