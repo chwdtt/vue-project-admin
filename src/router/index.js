@@ -5,7 +5,6 @@ import { getToken } from '@/utils/auth';
 
 Vue.use(VueRouter);
 
-
 const routes = [
 	{
 		path: '/',

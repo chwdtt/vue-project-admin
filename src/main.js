@@ -16,11 +16,11 @@ import './styles/common.scss';
 
 Vue.use(ElementUI);
 Vue.prototype.axios = axios;
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  axios,
-  render: h => h(App)
-}).$mount('#app')
+	router,
+	store,
+	axios,
+	render: h => h(App)
+}).$mount('#app');
