@@ -13,6 +13,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './styles/reset.scss';
 import './styles/common.scss';
 
+import './assets/iconfont/iconfont.css';
+
 
 Vue.use(ElementUI);
 Vue.prototype.axios = axios;

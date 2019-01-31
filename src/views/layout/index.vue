@@ -10,6 +10,7 @@
         <el-header>Header</el-header>
         <el-main>
             123213
+            <i class="icon iconfont">&#xe61a;</i>
         </el-main>
       </el-container>
     </el-container>
